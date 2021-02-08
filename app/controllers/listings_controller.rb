@@ -4,7 +4,7 @@ class ListingsController< ApplicationController
         if !logged_in?
             redirect '/login'
         else 
-            @listings= Listing.require_all
+            @listings= Listings.require_all
             erb :'listings/listings'
         end 
     end 

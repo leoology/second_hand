@@ -7,7 +7,7 @@
 <br>
 <% @listings.each do |l|%>
     <% if !l.empty? %>
-    <a href="/listings/#{listing.id}"><%=listing.title%></a>
+    <a href="/listings/#{l.id}"><%=l.title%></a>
     <%else%> Empty,human...
     <% end%>
     <%end%>

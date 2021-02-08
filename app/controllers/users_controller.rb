@@ -15,8 +15,8 @@ class UsersController< ApplicationController
             redirect 'signup'
             puts "Fields cannot be left blank."
         else 
-            @user=User.create(params)
-         #   @user=User.create(name: params[:name], email: params[:email], password: params[:password])
+           # @user=User.create(params)
+            @user=User.create(name: params[:name], email: params[:email], password: params[:password])
            # binding.pry
             session[:user_id]=@user.id
             redirect '/listings'

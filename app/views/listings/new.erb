@@ -6,13 +6,15 @@
 <h1>Create a Listing</h1>
 
   <form method="post" action="/listings">
-    <input type="text" name="title" placeholder="title"><br>
+    <input type="text" name="title" placeholder="Title"><br>
     <br>
-    <input type="text" name="description">
-<input type="number" name="price">
-<select id="item">
+    <input type="text" name="description" placeholder="Description">
+    <br>
+    <input type="number" name="price" placeholder="Price">
+    <br>
+    <select id="item">
     <option value="new">New</option>
-    <option value="used>Used</option>
+    <option value="used">Used</option>
     </select>
     <br>
     <input type="submit" name="submit" value="submit">
