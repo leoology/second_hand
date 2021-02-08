@@ -1,21 +1,25 @@
 class ListingsController< ApplicationController
 
     get '/listings' do 
-        if !logged_in?
-            redirect '/login'
-        else 
-            @listings= Listings.require_all
+       redirect_if_not_logged
+            @listings= Listing.all
             erb :'listings/listings'
-        end 
     end 
 
     get '/listings/new' do
-        if !logged_in?
-            redirect '/login'
-        else 
-            erb :'listings/new'
+     redirect_if_not_logged
+     erb :'listings/new' 
+    end 
+
+    get '/listings/:id/edit' do
+        redirect_if_not_logged
+        binding.pry
+       if @listing.user.id==current_user.id
+            erb :'/listings/edit'
         end 
     end 
+
+
 
     patch '/listings/:id/edit' do
         if logged_in?
@@ -32,31 +36,29 @@ class ListingsController< ApplicationController
     end 
 
     post '/listings' do
-        if logged_in?
-            if params[:description]==""
-                redirect 'listings/new'
-            else 
-                @listing= current_user.listings.build(description: params[:description])
-                @listing.save
-                if @listing.save
-                    redirect "/listings/#{@listing.id}"
-                else 
-                    redirect '/listings/news'
-                end 
-            end 
+        redirect_if_not_logged
+        @listing=current_user.listings.build(:description=> params[:description], :title=> params[:title], :condition=> params[:condition], :price=> params[:price])
+        if @listing.save
+            redirect "/listings/#{@listing.id}"
         else 
-            redirect '/login'
+            redirect '/listings/new'
         end 
+    end 
+
+    get '/listings/:id' do
+        @listing=Listing.find_by_id(params[:id])
+        erb :'listings/show'
+
     end 
 
     delete '/listings/:id/delete' do
         if logged_in?
             @listing=Listing.find_by_id(params[:id])
-            if @tweet.user_id==current_user.id
+            if @listing.user_id==current_user.id
                 @listing.delete
                 redirect '/listings'
             else 
-                erb :'tweets/error'
+                erb :'listings/error'
             end 
         else 
             redirect '/login'
