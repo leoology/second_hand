@@ -1,7 +1,7 @@
 
 <h1>Listing</h1>
 
-<p><%= @listing.title %></p>
+<h3><%= @listing.title %></h3>
 <p><%= @listing.description %></p>
 <p>$<%= @listing.price %></p>
 <p><%= @listing.condition %></p>
@@ -13,20 +13,18 @@
   <input type="submit" value="Delete Listing">
 </form>
 <br>
-<form action="/listing/<%= @listing.id%>" method="post">
+<a href='/listings'><button type="button" class="btn btn-success">Home</button></a>
+<form action="/comments" method="post">
 <input type="text" name="comment">
+<input type="hidden" name ="listing_id" value="<%=@listing.id%>">
 <input type="submit" value="Comment">
 <br>
 <% if @comments.size > 0 %>
     <% @comments.each do |c|%>  
         <p><%=c.content%></p>
         <br>
-    <% end %>
-<%else%> 
-    <p> No comments...</p>
+    <% end %> 
 <%end%>
-
-<a href='/listings'><button type="button" class="btn btn-success">Home</button></a>
 
 
 

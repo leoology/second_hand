@@ -21,8 +21,9 @@ class ListingsController< ApplicationController
 
     post '/listing/:id' do
         redirect_if_not_logged
+        @listing=Listing.find_by_id(params[:id]) 
         @comment=current_user.comments.build(:content=>params[:content])
-        if @comment.save
+        if  @comment.save
             redirect "/listings/#{@listing.id}"
         end 
     end
@@ -54,7 +55,7 @@ class ListingsController< ApplicationController
     get '/listings/:id' do
         redirect_if_not_logged
         @listing=Listing.find_by_id(params[:id])
-        @comments=Comment.all
+        @comments=@listing.comments
         erb :'listings/show'
     end 
 

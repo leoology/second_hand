@@ -3,3 +3,4 @@ use Rack::MethodOverride
 run ApplicationController
 use ListingsController
 use UsersController
+use CommentsController

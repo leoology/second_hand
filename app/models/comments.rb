@@ -1,5 +1,5 @@
-class Comments<ActiveRecord::Base
- belongs_to :listings
- belongs_to :users
+class Comment<ActiveRecord::Base
+ belongs_to :listing
+ belongs_to :user
 
 end
