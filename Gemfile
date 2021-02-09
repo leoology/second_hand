@@ -12,7 +12,6 @@ gem 'pry'
 gem 'tux'
 gem 'rack-flash3'
 gem 'bcrypt'
-gem 'commontator', '~> 4.11.1'
 
 
 group :test do

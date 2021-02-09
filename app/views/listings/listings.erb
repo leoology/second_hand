@@ -3,9 +3,11 @@
 <% if @listings.size > 0 %>
     <% @listings.each do |l|%>  
         <a href="/listings/<%=l.id%>"><%=l.title%></a>
+        <br>
     <% end %>
 <%else%> 
     <p> Empty,human...</p>
 <%end%>
+<br>
 <br>
 <a href="/listings/new">New Listing?</a>

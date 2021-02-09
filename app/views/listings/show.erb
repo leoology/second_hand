@@ -6,14 +6,19 @@
 <p>$<%= @listing.price %></p>
 <p><%= @listing.condition %></p>
 
-<a href="/listings/:id/edit">Edit Listing</a>
+<a href="/listings/<%= @listing.id%>/edit">Edit Listing</a>
 <br>
-<form action="/listing/:id" method="post">
-<input type="text" name="comment">
-<input type="submit" value="Comment">
-
-
 <form action="/listings/<%= @listing.id%>/delete" method="post">
   <input type="hidden" id="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Listing">
 </form>
+<br>
+<form action="/listing/<%= @listing.id%>" method="post">
+<input type="text" name="comment">
+<input type="submit" value="Comment">
+<br>
+
+<a href='/listings'><button type="button" class="btn btn-success">Home</button></a>
+
+
+
