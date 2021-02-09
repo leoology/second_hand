@@ -2,8 +2,8 @@ class ListingsController< ApplicationController
 
     get '/listings' do 
        redirect_if_not_logged
-            @listings= Listing.all
-            erb :'listings/listings'
+        @listings= Listing.all
+        erb :'listings/listings'
     end 
 
     get '/listings/new' do
@@ -24,19 +24,20 @@ class ListingsController< ApplicationController
         @comment=current_user.comments.build(:content=>params[:content])
         if @comment.save
             redirect "/listings/#{@listing.id}"
+        end 
     end
 
 
 
     patch '/listings/:id/edit' do
         redirect_if_not_logged
-            @listing= Listing.find_by(params[:id])
-            if !params[:description]==""
+        @listing= Listing.find_by(params[:id])
+        if !params[:description]==""
                 redirect "/tweets/#{@listing.id}/edit"
-            else 
+        else 
                 @listing.description=params[:description]
                 @listing.save
-            end  
+        end  
             redirect '/login' 
     end 
 
@@ -51,10 +52,10 @@ class ListingsController< ApplicationController
     end 
 
     get '/listings/:id' do
+        redirect_if_not_logged
         @listing=Listing.find_by_id(params[:id])
+        @comments=Comment.all
         erb :'listings/show'
-        
-
     end 
 
     delete '/listings/:id/delete' do
@@ -68,5 +69,5 @@ class ListingsController< ApplicationController
             end 
      
             redirect '/login' 
-    end 
+    end  
 end 
