@@ -1,4 +1,6 @@
-
+<%if flash[:success]%>
+<%=flash[:success]%>
+<%end%>
 <h1>Listing</h1>
 
 <h3><%= @listing.title %></h3>
