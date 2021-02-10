@@ -1,5 +1,6 @@
 <h1>Hello, Human!</h1>
 <br>
+<h4>All Listings</h4>
 <% if @listings.size > 0 %>
     <% @listings.each do |l|%>  
         <a href="/listings/<%=l.id%>"><%=l.title%></a>
@@ -11,3 +12,7 @@
 <br>
 <br>
 <a href="/listings/new">New Listing?</a>
+<br>
+<a href='/logout'><button type="button" class="btn btn-danger">Logout</button></a>
+
+
