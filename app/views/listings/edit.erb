@@ -1,11 +1,36 @@
+<head>
+<style>
+div {
+    background-color: white;
+    # width: 500px;
+    # height: 150px;
+    text-align: center;
+    margin: 100px;
+}
+body{
+    background-color: teal;
+}
+</style>
+</head>
+
+<body>
 <h1>Edit Your Listing</h1>
+<div>
 <form method="post" action="/listings/<%= @listing.id%>/edit">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <input id="title" type="text" value="<%=@listing.title%>" name="title">
+    <br>
     <input id="description" type="text" value="<%=@listing.description%>" name="description">
-    <input id="price" type="number" value="<%=@listing.price%>" name="price">
+    <br>
+    <input id="price" type="number" value="<%=@listing.price%>" name="price" placeholder="price">
+    <br>
     <select id="item" name="condition">
         <option value="new">New</option>
         <option value="used">Used</option>
     </select>
+    <br>
+    <input type="submit" name="submit" value="submit">
+
  </form>
+ </div>
+ </body>

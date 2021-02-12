@@ -8,12 +8,14 @@
 <p>$<%= @listing.price %></p>
 <p><%= @listing.condition %></p>
 
+<%if @listing.user_id==current_user.id%>
 <a href="/listings/<%= @listing.id%>/edit">Edit Listing</a>
 <br>
 <form action="/listings/<%= @listing.id%>/delete" method="post">
   <input type="hidden" id="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Listing">
 </form>
+<%end%>
 <br>
 <form action="/comments" method="post">
 <input type="text" name="comment">

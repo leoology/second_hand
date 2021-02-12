@@ -1,5 +1,21 @@
+<head>
+<style>
+div {
+    background-color: white;
+    # width: 500px;
+    # height: 150px;
+    text-align: center;
+    margin: 100px;
+}
+body{
+    background-color: teal;
+}
+</style>
+</head>
+<body>
 <h1>Hello, Human!</h1>
-<br>
+<div>
+<div class="container">
 <h4>All Listings</h4>
 <% if @listings.size > 0 %>
     <% @listings.each do |l|%>  
@@ -9,6 +25,8 @@
 <%else%> 
     <p> Empty,human...</p>
 <%end%>
+</div>
+</body>
 
 
 
